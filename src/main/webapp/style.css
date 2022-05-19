@@ -8,13 +8,19 @@ body{
 	font-weight: 400;
 }
 
+#caix3 {
+	
+	padding: 5px;
+	margin-bottom: 10px;
+	border: 1px solid #66bbff; /*contorno e cor das bordas */	
+}
+
 h1{
 
 	color: #66bbff;
 }
 
 .botao1{
-
 text-decoration: none;
 background-color: #66bbff;
 padding: 5px 10px 5px 10px;/*cima direita baixo esquerda*/
@@ -22,5 +28,79 @@ color: #fff;
 font-size: 1.2em;
 font-weight: 700; /*peso da fonte*/
 border-radius: 5px;
+border: 0; /*remover as bordas escuras do botão*/
+cursor: pointer; /*alterar o cursor quando estiver em cima do botão*/
+}
+
+
+.botao2{
+text-decoration: none;
+background-color: #d51213;
+padding: 5px 10px 5px 10px;/*cima direita baixo esquerda*/
+color: #fff;
+font-size: 1.2em;
+font-weight: 700; /*peso da fonte*/
+border-radius: 5px;
 
 }
+
+
+
+.caixa1{
+
+	width:320px ; /*comprimento da caixa*/
+	padding: 5px;
+	margin-bottom: 10px;
+	border: 1px solid #66bbff; /*contorno e cor das bordas */
+	border-radius: 5px;
+}
+
+.caxa2{
+	
+	padding: 5px;
+	margin-bottom: 10px;
+	border: 1px solid #66bbff; /*contorno e cor das bordas */
+	border-radius: 5px;
+
+}
+
+
+#tabela{
+	
+	margin-top: 30px;
+	border-collapse: collapse; /**/
+}
+
+#tabela th{ /*coluna da tabela*/
+	
+	border: 1px solid #ddd;
+	padding: 10px;
+	text-aling: left;
+	background-color: #66bbff;
+	color: #fff;	
+}
+
+#tebela td{ /*corpo da tabela*/
+
+    border: 1px solid #ddd;
+	padding: 10px;	
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

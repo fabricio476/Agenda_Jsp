@@ -14,7 +14,7 @@ public class ModuloDeConexao {
 	String user ="root";
 	String password ="";
 	
-	private Connection getConectar() {
+	public Connection getConectar() {
 		
 		Connection conexao =null;
 		
@@ -35,6 +35,7 @@ public class ModuloDeConexao {
 		} 	
 	}
 	
+	/*
 	public void testeConexao() {
 		
 		try {
@@ -49,6 +50,6 @@ public class ModuloDeConexao {
 			System.out.println(e);
 		}
 	}
-	
+	*/
 
 }

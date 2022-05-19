@@ -14,7 +14,7 @@ public class AgendaBeans {
 	
 	
 	
-	
+	//contrutor para criar um objeto NO MEMENTO DE EXECUTAR O METODO JA COM OS ATRIBUTOS
 	public AgendaBeans(int idcon, String nome, String fone, String email) {
 		super();
 		this.idcon = idcon;
