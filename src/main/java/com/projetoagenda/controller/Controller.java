@@ -11,10 +11,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.itextpdf.text.Document;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfPCell;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
 import com.projetoagenda.model.AgendaBeans;
 import com.projetoagenda.model.AgendaDAO;
 
-@WebServlet(urlPatterns = { "/Controller", "/main","/select", "/insert","/update","/delete" }) /* URL caminhos - configura a pagina - requisiçoes  (definimos nos <form> <button> etc..*/
+@WebServlet(urlPatterns = { "/Controller", "/main","/select", "/insert","/update","/delete","/report" }) /* URL caminhos - configura a pagina - requisiçoes  (definimos nos <form> <button> etc..*/
 public class Controller extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     
@@ -56,9 +61,14 @@ public class Controller extends HttpServlet {
 			
 			removerContato(request,response);
 			
-		}else {
+		}else if(action.equalsIgnoreCase("/report")) {
+			
+			gerarRelatorio(request,response);
+			
+		}else{
 			
 			response.sendRedirect("index.html");
+			
 		}
 		
 		
@@ -171,7 +181,72 @@ public class Controller extends HttpServlet {
 		}
 		
 		
-		
+		protected void gerarRelatorio(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+			
+		     // Classe da BIBLIOTECA ITEXT
+			 Document documento = new Document();
+			 
+			 try {
+				 
+				 //para informar que a resposta vai ser um documneto PDF
+				 response.setContentType("apllication/pdf");
+				 
+				 //nome do documento
+				 response.addHeader("Content-Disposition", "inline; filename=" + "contatos.pdf");
+				 
+				 //criar documento
+				 PdfWriter.getInstance(documento, response.getOutputStream());
+				 
+				 //abrir o documneto
+				 documento.open();
+				 
+				 //escrever uma paragrafo no pdf
+				 documento.add(new Paragraph("Lista de contatos:"));
+				 
+				 documento.add(new Paragraph(" ")); //pular uma linha no documneto
+				 
+				 //criar tabela
+				 PdfPTable tabela = new PdfPTable(3);//numero 3 para criar 3 colunas
+				 
+				 //criar cabeçalho - nome das colunas
+				 PdfPCell col1 = new PdfPCell(new Paragraph("Nome"));
+				 PdfPCell col2 = new PdfPCell(new Paragraph("Fone"));
+				 PdfPCell col3 = new PdfPCell(new Paragraph("E-mail"));
+				 
+				 //adicionar na tabela
+				 tabela.addCell(col1);
+				 tabela.addCell(col2);
+				 tabela.addCell(col3);
+				 
+				 ArrayList<AgendaBeans> listacontatos = DAOagenda.listarContatos();
+				 
+				 //adicionar os dados da lista no na tabela
+				 for (AgendaBeans a : listacontatos) {
+					 
+					 tabela.addCell(a.getNome());
+					 tabela.addCell(a.getFone());
+					 tabela.addCell(a.getEmail());
+				}
+				 
+				 
+				 //adicuonar no documento a tabela
+				 documento.add(tabela);
+				
+			} catch (Exception e) {
+
+
+				System.out.println(" ");
+				
+				
+			}finally {
+				
+				documento.close();
+				
+			}
+			
+			
+			
+		}
 		
 		
 

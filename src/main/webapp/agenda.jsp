@@ -23,6 +23,7 @@
 <body>
     <h1>Agenda de contatos</h1>
     <a  href="novo.html" class="botao1" href="">Novo contato</a>
+    <a  href="report" class="botao2" href="">Relatório PDF</a> <!-- href="report" encaminha para o servelets -->
     <table id="tabela" >
         <thead>
             <tr> <!-- COLUNA -->
